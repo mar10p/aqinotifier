@@ -4,7 +4,7 @@ MYPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 source ${MYPATH}/aqinotifier.conf
 date >> "${LOG}"
 
-AQI=$(curl -s "${URL}" | pup 'p.aqi-value__value text{}' | xargs)
+AQI=$(curl -s "${URL}" | ${PUP} 'p.aqi-value__value text{}' | xargs)
 
 if [ ! "${AQI}" ]; then
   echo "FAILED to read AQI" >> "${LOG}"
